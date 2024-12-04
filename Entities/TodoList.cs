@@ -13,6 +13,7 @@ public class TodoList : List<Todo>
     public TodoListName Name { get; private set; }
     public DateTime CreateDate { get; private init; }
     public DateTime? UpdateDate { get; private set; }
+    public bool IsValidForDelete => this.All(t => t.IsComplete);
 
     private TodoList(string name)
     {
@@ -27,5 +28,4 @@ public class TodoList : List<Todo>
         Name = new(name);
         UpdateDate = DateTime.Now;
     }
-    public bool IsValidForDelete() => this.All(t => t.IsComplete);
 }

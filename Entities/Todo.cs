@@ -14,6 +14,11 @@ public class Todo
     public bool IsComplete { get; private init; }
     public DateTime CreateDate { get; private init; }
     public DateTime? UpdateDate { get; private init; }
+    public bool IsIncludeInDueToday => DueDate.HasValue && DueDate.Value == DateOnly.FromDateTime(DateTime.Today) && !IsComplete;
+    public bool IsIncludeInImportant => IsImportant && !IsComplete;
+    public bool IsIncludeInCompleted => IsComplete;
+    public bool IsValidForUpdate => !IsComplete;
+    public bool IsValidForDelete => !IsImportant;
 
     private Todo(TodoListId todoListId, string description, DateOnly? dueDate, bool isImportant, bool isComplete)
     {
@@ -26,10 +31,5 @@ public class Todo
         CreateDate = DateTime.Now;
     }
 
-    public bool IsIncludeInDueToday() => DueDate.HasValue && DueDate.Value == DateOnly.FromDateTime(DateTime.Today) && !IsComplete;
-    public bool IsIncludeInImportant() => IsImportant && !IsComplete;
-    public bool IsIncludeInCompleted() => IsComplete;
-
     public static Todo Create(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
-    public bool IsValidForDelete() => !IsImportant;
 }
