@@ -9,10 +9,10 @@ public class TodoList : List<Todo>
     private const int MAX_LENGTH_FOR_NAME = 255;
     private const int MIN_LENGTH_FOR_NAME = 1;
 
-    public TodoListId Id { get; set; }
-    public TodoListName Name { get; set; }
-    public DateTime CreateDate { get; set; }
-    public DateTime? UpdateDate { get; set; }
+    public TodoListId Id { get; private init; }
+    public TodoListName Name { get; private set; }
+    public DateTime CreateDate { get; private init; }
+    public DateTime? UpdateDate { get; private set; }
 
     private TodoList(string name)
     {
