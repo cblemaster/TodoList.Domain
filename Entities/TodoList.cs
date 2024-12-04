@@ -13,7 +13,7 @@ public class TodoList : List<Todo>
     public TodoListName Name { get; private set; }
     public DateTime CreateDate { get; private init; }
     public DateTime? UpdateDate { get; private set; }
-    public bool IsValidForDelete => this.All(t => t.IsComplete);
+    public bool CanBeDeleted => this.All(t => t.IsComplete);
 
     private TodoList(string name)
     {
@@ -30,7 +30,7 @@ public class TodoList : List<Todo>
     }
     public void DeleteTodo(Todo todo)
     {
-        if (!todo.IsValidForDelete)
+        if (!todo.CanBeDeleted)
         {
             return;
         }

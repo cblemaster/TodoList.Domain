@@ -15,10 +15,11 @@ public class Todo
     public DateTime CreateDate { get; private init; }
     public DateTime? UpdateDate { get; private set; }
     public bool IsIncludeInDueToday => DueDate.HasValue && DueDate.Value == DateOnly.FromDateTime(DateTime.Today) && !IsComplete;
+    public bool IsIncludeInOverdue => DueDate.HasValue && DueDate.Value < DateOnly.FromDateTime(DateTime.Today) && !IsComplete;
     public bool IsIncludeInImportant => IsImportant && !IsComplete;
     public bool IsIncludeInCompleted => IsComplete;
-    public bool IsValidForUpdate => !IsComplete;
-    public bool IsValidForDelete => !IsImportant;
+    public bool CanBeUpdated => !IsComplete;
+    public bool CanBeDeleted => !IsImportant;
 
     private Todo(TodoListId todoListId, string description, DateOnly? dueDate, bool isImportant, bool isComplete)
     {
@@ -31,10 +32,10 @@ public class Todo
         CreateDate = DateTime.Now;
     }
 
-    public static Todo Create(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
+    public static Todo Construct(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
     public void Update(TodoDescription description, DateOnly? dueDate)
     {
-        if (!IsValidForUpdate)
+        if (!CanBeUpdated)
         {
             return;
         }
@@ -46,7 +47,7 @@ public class Todo
     }
     public void ToggleImportance()
     {
-        if (!IsValidForUpdate)
+        if (!CanBeUpdated)
         {
             return;
         }

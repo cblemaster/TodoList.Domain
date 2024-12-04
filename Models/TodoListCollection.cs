@@ -5,7 +5,7 @@ public class TodoListCollection : List<Entities.TodoList>
 {
     public void DeleteList(Entities.TodoList list)
     {
-        if (list.IsValidForDelete)
+        if (list.CanBeDeleted)
         {
             Remove(list);
         }
@@ -13,7 +13,7 @@ public class TodoListCollection : List<Entities.TodoList>
 
     public void MoveTodo(Entities.Todo todo)
     {
-        if (todo.IsValidForUpdate)
+        if (todo.CanBeUpdated)
         {
             Entities.Todo? entity = this.SelectMany(l => l).SingleOrDefault(l => l.Id == todo.Id);
             if (entity is not null)
