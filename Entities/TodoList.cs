@@ -28,4 +28,15 @@ public class TodoList : List<Todo>
         Name = new(name);
         UpdateDate = DateTime.Now;
     }
+    public void DeleteTodo(Todo todo)
+    {
+        if (!todo.IsValidForDelete)
+        {
+            return;
+        }
+        else
+        {
+            Remove(todo);
+        }
+    }
 }

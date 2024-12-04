@@ -8,12 +8,12 @@ public class Todo
 {
     public TodoId Id { get; private init; }
     public TodoListId TodoListId { get; private init; }
-    public TodoDescription Description { get; private init; }
-    public DateOnly? DueDate { get; private init; }
-    public bool IsImportant { get; private init; }
-    public bool IsComplete { get; private init; }
+    public TodoDescription Description { get; private set; }
+    public DateOnly? DueDate { get; private set; }
+    public bool IsImportant { get; private set; }
+    public bool IsComplete { get; private set; }
     public DateTime CreateDate { get; private init; }
-    public DateTime? UpdateDate { get; private init; }
+    public DateTime? UpdateDate { get; private set; }
     public bool IsIncludeInDueToday => DueDate.HasValue && DueDate.Value == DateOnly.FromDateTime(DateTime.Today) && !IsComplete;
     public bool IsIncludeInImportant => IsImportant && !IsComplete;
     public bool IsIncludeInCompleted => IsComplete;
@@ -32,4 +32,28 @@ public class Todo
     }
 
     public static Todo Create(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
+    public void Update(TodoDescription description, DateOnly? dueDate)
+    {
+        if (!IsValidForUpdate)
+        {
+            return;
+        }
+        else
+        {
+            if (Description != description) { Description = description; UpdateDate = DateTime.Now; }
+            if (DueDate != dueDate) { DueDate = dueDate; UpdateDate = DateTime.Now; }
+        }
+    }
+    public void ToggleImportance()
+    {
+        if (!IsValidForUpdate)
+        {
+            return;
+        }
+        else
+        {
+            IsImportant = !IsImportant;
+        }
+    }
+    public void ToggleCompletion() => IsComplete = !IsComplete;
 }
