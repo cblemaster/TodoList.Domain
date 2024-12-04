@@ -30,6 +30,7 @@ public class TodoListCollection : List<Entities.TodoList>
                     {
                         listToRemoveFrom.Remove(todo);
                         listToAddTo.Add(todo);
+                        // todo.UpdateDate = DateTime.Now;  // TODO: This won't work due to the private setter on todo.updatedate
                     }
                 }
             }

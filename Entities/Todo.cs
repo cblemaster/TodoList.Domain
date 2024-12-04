@@ -54,7 +54,12 @@ public class Todo
         else
         {
             IsImportant = !IsImportant;
+            UpdateDate = DateTime.Now;
         }
     }
-    public void ToggleCompletion() => IsComplete = !IsComplete;
+    public void ToggleCompletion()
+    {
+        IsComplete = !IsComplete;
+        UpdateDate= DateTime.Now;
+    }
 }
