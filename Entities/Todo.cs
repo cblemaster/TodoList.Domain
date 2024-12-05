@@ -32,7 +32,20 @@ public class Todo
         CreateDate = DateTime.Now;
     }
 
-    public static Todo Construct(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
+    public static Todo Construct
+        (TodoListId todoListId,
+
+        [Required(AllowEmptyStrings = false,
+            ErrorMessage = Constants.ERROR_FOR_TODO_DESC_REQUIRED),
+        StringLength(maximumLength: Constants.MAX_LENGTH_FOR_TODO_DESC,
+            ErrorMessage = Constants.ERROR_FOR_TODO_DESC_MAX_LENGTH,
+            MinimumLength = Constants.MIN_LENGTH_FOR_TODO_DESC),
+        RegularExpression(@"[^\s+$]", ErrorMessage = Constants.ERROR_FOR_TODO_DESC_REQUIRED)]
+        string description,
+
+        DateOnly? dueDate,
+        bool isImportant,
+        bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
 
     /*public void Update(TodoDescription description, DateOnly? dueDate)
     {

@@ -9,8 +9,5 @@ public readonly record struct TodoDescription
      StringLength(maximumLength: Constants.MAX_LENGTH_FOR_TODO_DESC,
         ErrorMessage = Constants.ERROR_FOR_TODO_DESC_MAX_LENGTH,
         MinimumLength = Constants.MIN_LENGTH_FOR_TODO_DESC),
-     RegularExpression(@"!\s+", ErrorMessage = Constants.ERROR_FOR_TODO_DESC_REQUIRED)]
+     RegularExpression(@"[^\s+$]", ErrorMessage = Constants.ERROR_FOR_TODO_DESC_REQUIRED)]
     string Value);
-
-// TODO: fix the regex above - want to invalidate all whitespace
-// TODO: implement 'enhanced' data annotation domain-wide

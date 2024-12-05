@@ -19,7 +19,13 @@ public class TodoList : List<Todo>
         CreateDate = DateTime.Now;
     }
 
-    public static TodoList Create([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name) => new(name);
+    public static TodoList Create
+        ([Required(AllowEmptyStrings = false,
+            ErrorMessage = Constants.ERROR_FOR_TODOLIST_NAME_REQUIRED),
+         StringLength(maximumLength: Constants.MAX_LENGTH_FOR_TODOLIST_NAME,
+            ErrorMessage = Constants.ERROR_FOR_TODOLIST_NAME_MAX_LENGTH,
+            MinimumLength = Constants.MIN_LENGTH_FOR_TODOLIST_NAME),
+         RegularExpression(@"[^\s+$]", ErrorMessage = Constants.ERROR_FOR_TODOLIST_NAME_REQUIRED)] string name) => new(name);
 
     /*public void Rename([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name)
     {
