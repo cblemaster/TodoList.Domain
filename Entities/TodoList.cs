@@ -26,21 +26,4 @@ public class TodoList : List<Todo>
             ErrorMessage = Constants.ERROR_FOR_TODOLIST_NAME_MAX_LENGTH,
             MinimumLength = Constants.MIN_LENGTH_FOR_TODOLIST_NAME),
          RegularExpression(@"[^\s+$]", ErrorMessage = Constants.ERROR_FOR_TODOLIST_NAME_REQUIRED)] string name) => new(name);
-
-    /*public void Rename([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name)
-    {
-        Name = new(name);
-        UpdateDate = DateTime.Now;
-    }
-    public void DeleteTodo(Todo todo)
-    {
-        if (!todo.CanBeDeleted)
-        {
-            return;
-        }
-        else
-        {
-            Remove(todo);
-        }
-    }*/
 }

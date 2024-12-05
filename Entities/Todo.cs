@@ -46,34 +46,4 @@ public class Todo
         DateOnly? dueDate,
         bool isImportant,
         bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
-
-    /*public void Update(TodoDescription description, DateOnly? dueDate)
-    {
-        if (!CanBeUpdated)
-        {
-            return;
-        }
-        else
-        {
-            if (Description != description) { Description = description; UpdateDate = DateTime.Now; }
-            if (DueDate != dueDate) { DueDate = dueDate; UpdateDate = DateTime.Now; }
-        }
-    }
-    public void ToggleImportance()
-    {
-        if (!CanBeUpdated)
-        {
-            return;
-        }
-        else
-        {
-            IsImportant = !IsImportant;
-            UpdateDate = DateTime.Now;
-        }
-    }
-    public void ToggleCompletion()
-    {
-        IsComplete = !IsComplete;
-        UpdateDate= DateTime.Now;
-    }*/
 }
