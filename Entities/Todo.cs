@@ -33,7 +33,8 @@ public class Todo
     }
 
     public static Todo Construct(TodoListId todoListId, [Required, MaxLength(Constants.MAX_LENGTH_FOR_TODO_DESC), MinLength(Constants.MIN_LENGTH_FOR_TODO_DESC)] string description, DateOnly? dueDate, bool isImportant, bool isComplete) => new(todoListId, description, dueDate, isImportant, isComplete);
-    public void Update(TodoDescription description, DateOnly? dueDate)
+
+    /*public void Update(TodoDescription description, DateOnly? dueDate)
     {
         if (!CanBeUpdated)
         {
@@ -61,5 +62,5 @@ public class Todo
     {
         IsComplete = !IsComplete;
         UpdateDate= DateTime.Now;
-    }
+    }*/
 }

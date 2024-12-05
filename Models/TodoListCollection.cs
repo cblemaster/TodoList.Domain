@@ -3,7 +3,7 @@ namespace TodoList.Domain.Models;
 
 public class TodoListCollection : List<Entities.TodoList>
 {
-    public void DeleteList(Entities.TodoList list)
+    /*public void DeleteList(Entities.TodoList list)
     {
         if (list.CanBeDeleted)
         {
@@ -30,10 +30,10 @@ public class TodoListCollection : List<Entities.TodoList>
                     {
                         listToRemoveFrom.Remove(todo);
                         listToAddTo.Add(todo);
-                        // todo.UpdateDate = DateTime.Now;  // TODO: This won't work due to the private setter on todo.updatedate
+                        // todo.UpdateDate = DateTime.Now;  // This won't work due to the private setter on todo.updatedate
                     }
                 }
             }
         }
-    }
+    }*/
 }

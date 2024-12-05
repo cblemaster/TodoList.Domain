@@ -20,7 +20,8 @@ public class TodoList : List<Todo>
     }
 
     public static TodoList Create([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name) => new(name);
-    public void Rename([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name)
+
+    /*public void Rename([Required, MaxLength(Constants.MAX_LENGTH_FOR_TODOLIST_NAME), MinLength(Constants.MIN_LENGTH_FOR_TODOLIST_NAME)] string name)
     {
         Name = new(name);
         UpdateDate = DateTime.Now;
@@ -35,5 +36,5 @@ public class TodoList : List<Todo>
         {
             Remove(todo);
         }
-    }
+    }*/
 }
