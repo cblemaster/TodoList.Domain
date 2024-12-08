@@ -1,4 +1,4 @@
 ﻿
 namespace TodoList.Domain.Primitives;
 
-internal record Descriptor(ValidString Value, int MaxLength, bool IsRequired, bool IsAllowAllWhitespace);
+internal readonly record struct Descriptor(ValidString Value, int MaxLength, bool IsRequired, bool IsAllowAllWhitespace);
