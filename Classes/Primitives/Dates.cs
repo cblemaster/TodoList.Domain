@@ -1,7 +1,4 @@
-﻿namespace TodoList.Domain.Classes.Primitives;
+﻿
+namespace TodoList.Domain.Classes.Primitives;
 
-internal class Dates
-{
-    internal DateTime CreateDate { get; init; }
-    internal DateTime? UpdateDate { get; init; }
-}
+internal readonly record struct Dates(DateTime CreateDate, DateTime? UpdateDate);

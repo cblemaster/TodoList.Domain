@@ -1,8 +1,4 @@
 ﻿
 namespace TodoList.Domain.Classes.Primitives;
 
-internal class InvalidString
-{
-    internal required string Value { get; init; }
-    internal required IEnumerable<string> ValidationErrors { get; set; }
-}
+internal readonly record struct InvalidString(string Value, IEnumerable<string> ValidationErrors);
