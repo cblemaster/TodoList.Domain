@@ -1,5 +1,4 @@
-﻿
-namespace TodoList.Domain.Primitives;
+﻿namespace TodoList.Domain;
 
 internal static class Constants
 {
