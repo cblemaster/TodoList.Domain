@@ -11,10 +11,13 @@ internal class TodoList : List<Todo>
     internal required DateTime? UpdateDate { get; init; }
     internal bool CanBeDeleted => this.All(t => t.IsComplete);
 
-    internal TodoList(Descriptor name)
+    private TodoList() { }
+
+    public TodoList Construct(Descriptor name) => new()
     {
-        Id = new(Guid.CreateVersion7());
-        Name = name;
-        CreateDate = DateTime.Now;
-    }
+        Id = new TodoListId(),
+        Name = name,
+        CreateDate = DateTime.Now,
+        UpdateDate = null
+    };
 }
