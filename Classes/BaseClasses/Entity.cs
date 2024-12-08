@@ -1,5 +1,6 @@
-﻿
-namespace TodoList.Domain.Classes;
+﻿using TodoList.Domain.Classes.Primitives;
+
+namespace TodoList.Domain.Classes.BaseClasses;
 
 internal abstract class Entity<T>
 {

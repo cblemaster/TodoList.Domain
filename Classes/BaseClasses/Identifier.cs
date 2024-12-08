@@ -1,5 +1,4 @@
-﻿
-namespace TodoList.Domain.Classes;
+﻿namespace TodoList.Domain.Classes.BaseClasses;
 
 internal abstract class Identifier<T>
 {
