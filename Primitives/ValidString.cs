@@ -1,7 +1,5 @@
 ﻿
 namespace TodoList.Domain.Primitives;
 
-internal class ValidString : ValidatableString
-{
-
-}
+internal record ValidString(string Value, int MaxLength, bool IsRequired, bool IsAllowAllWhitespace)
+    : ValidatableString(Value, MaxLength, IsRequired, IsAllowAllWhitespace);

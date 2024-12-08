@@ -1,18 +1,14 @@
 ﻿
 using System.Text.RegularExpressions;
+using TodoList.Domain.Validation;
 
 namespace TodoList.Domain.Primitives;
 
-internal class ValidatableString
+internal record ValidatableString(string Value, int MaxLength, bool IsRequired, bool IsAllowAllWhitespace)
 {
-    internal required string Value { get; init; }
-    internal required int MaxLength { get; init; }
-    internal required bool IsRequired { get; init; }
-    internal required bool IsAllowAllWhitespace { get; init; }
+    internal ValidString ThisAsValidString() => new(Value, MaxLength, IsRequired, IsAllowAllWhitespace);
 
-    internal ValidString ThisAsValidString() => new() { Value = Value, MaxLength = MaxLength, IsRequired = IsRequired, IsAllowAllWhitespace = IsAllowAllWhitespace };
-
-    internal InvalidString ThisAsInvalidString(string validationError) => new() { Value = Value, MaxLength = MaxLength, IsRequired = IsRequired, IsAllowAllWhitespace = IsAllowAllWhitespace, ValidationErrors = [validationError] };
+    internal InvalidString ThisAsInvalidString(string validationError) => new(Value, MaxLength, IsRequired, IsAllowAllWhitespace, [validationError]);
 
     internal ValidatableString ValidateAndReturnValidStringOrInvalidString()
     {

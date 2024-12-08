@@ -1,7 +1,8 @@
 ﻿
 namespace TodoList.Domain.Primitives;
 
-internal class InvalidString : ValidatableString
+internal record InvalidString(string Value, int MaxLength, bool IsRequired, bool IsAllowAllWhitespace, IEnumerable<string> ValidationErrors)
+    : ValidatableString(Value, MaxLength, IsRequired, IsAllowAllWhitespace)
 {
-    internal required IEnumerable<string> ValidationErrors { get; init; }
+    internal IEnumerable<string> ValidationErrors { get; init; } = ValidationErrors;
 }
