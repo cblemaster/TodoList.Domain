@@ -1,8 +1,7 @@
 ﻿
 using System.Text.RegularExpressions;
-using TodoList.Domain.Classes.Validation;
 
-namespace TodoList.Domain.Classes.Primitives;
+namespace TodoList.Domain.Classes.Validation.Strings;
 
 internal class ValidatableString
 {
@@ -21,7 +20,7 @@ internal class ValidatableString
             isValid = false;
             errors.Add("Value is required.");
         }
-        else if (!IsAllowAllCharsWhitespace && Regex.Match(Value, (@"[^\s+$]")).Success)
+        else if (!IsAllowAllCharsWhitespace && Regex.Match(Value, @"[^\s+$]").Success)
         {
             isValid = false;
             errors.Add("Value cannot be only whitespace characters.");
