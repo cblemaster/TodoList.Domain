@@ -6,7 +6,7 @@ namespace TodoList.Domain.Classes.Entities;
 
 internal class Todo : Entity<Todo>
 {
-    private Id<Todo> _id;
+    private Id<Todo> _id = default!;
 
     internal override required Id<Todo> Id { get => _id; init => _id = value; }
     internal required Descriptor Description { get; init; }

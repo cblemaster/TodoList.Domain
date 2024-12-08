@@ -6,7 +6,7 @@ namespace TodoList.Domain.Classes.Entities;
 
 internal class TodoList : Entity<TodoList>
 {
-    internal Id<TodoList> _id;
+    private Id<TodoList> _id = default!;
 
     internal IEnumerable<Todo> Todos { get; init; } = [];
     internal required override Id<TodoList> Id { get => _id; init => _id = value; }
