@@ -1,7 +1,7 @@
 ﻿
 using TodoList.Domain.Classes.Primitives;
 
-namespace TodoList.Domain.Classes.BaseClasses;
+namespace TodoList.Domain.Classes.Entities.BaseClasses;
 
 internal abstract class Entity<T>
 {

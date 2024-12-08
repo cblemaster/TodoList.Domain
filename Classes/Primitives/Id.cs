@@ -1,5 +1,5 @@
 ﻿
-using TodoList.Domain.Classes.BaseClasses;
+using TodoList.Domain.Classes.Primitives.BaseClasses;
 
 namespace TodoList.Domain.Classes.Primitives;
 
