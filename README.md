@@ -12,7 +12,6 @@
 ## Domain rules
 +TBD, currently documented elsewhere
 ## Improvement opportunities
-+Continue looking into specifications and guard clauses, I'm not jazzed about the way validation is implemented, e.g., weird asp.net controller-type data annotation, throws exceptions
-+For now add errors to the data annotations and make them reusable
-+The goal is to prevent invalid entities from being instantiated
-+Look into domain events and how to implement, I might not need them depending on how I implement the aggregates?
++Continue looking into specifications and guard clauses
++Keep .NET version up to date
++Stay on top of todo comments
