@@ -1,7 +1,8 @@
 ﻿
 using System.Text.RegularExpressions;
+using TodoList.Domain.ValueStructs;
 
-namespace TodoList.Domain;
+namespace TodoList.Domain.Primitives;
 
 internal record InvalidString(string Value, bool IsRequired, int? MaxLength, bool IsAllWhitespaceAllowed, ValidationResult ValidationResult) : ValidatableString(Value)
 {
@@ -22,7 +23,7 @@ internal record InvalidString(string Value, bool IsRequired, int? MaxLength, boo
             isValid = false;
             validationErrors.Add($"Value must be {MaxLength} characters or fewer");
         }
-        else if (!IsAllWhitespaceAllowed && Regex.Match(Value, (@"[^\s+$]")).Success)
+        else if (!IsAllWhitespaceAllowed && Regex.Match(Value, @"[^\s+$]").Success)
         {
             isValid = false;
             validationErrors.Add("Value cannot consist of only whitespace characters");
